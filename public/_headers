@@ -1,0 +1,7 @@
+# HTTP response headers Cloudflare adds to every page. These protections only
+# work as real headers, not as <meta> tags in the HTML.
+/*
+  # Stop other sites from embedding this site in a frame (clickjacking).
+  Content-Security-Policy: frame-ancestors 'none'
+  # Stop browsers guessing file types (e.g. running a text file as a script).
+  X-Content-Type-Options: nosniff
