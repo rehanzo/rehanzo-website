@@ -7,6 +7,8 @@
   // Serve the site on rehanzo.com. Cloudflare creates the DNS record and the
   // HTTPS certificate for it on deploy.
   "routes": [{ "pattern": "rehanzo.com", "custom_domain": true }],
+  // Only serve on rehanzo.com, not the *.workers.dev preview address.
+  "workers_dev": false,
   "assets": {
     // Upload the static site Astro builds.
     "directory": "./dist",
