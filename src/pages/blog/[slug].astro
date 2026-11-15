@@ -1,0 +1,127 @@
+---
+// One page per blog post. The [slug] in the filename is a placeholder:
+// getStaticPaths() lists every value it takes, and Astro builds a page for each.
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { getPosts, type Post } from "../../lib/blog";
+import "../../styles/prism.css";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const isCollection = post.data.categories.includes("collections");
+---
+
+<Base title={post.data.title}>
+  <article class:list={["post", { collection: isCollection }]}>
+    <h1>{post.data.title}</h1>
+    <Content />
+  </article>
+</Base>
+
+<style>
+  /*
+   * Everything inside <Content /> comes from the Markdown file, so it is
+   * outside this file's scoped styles; :global() is needed to style it.
+   */
+  .post {
+    width: 60ch;
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 5rem 0 6rem;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    /* Contain floated images, so they can't hang out past the end. */
+    display: flow-root;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    line-height: 1.3;
+  }
+
+  .post :global(:is(h2, h3, h4, h5, h6)) {
+    margin: 1em 0;
+    font-size: 1.2em;
+    color: var(--link);
+  }
+
+  .post :global(:is(p, blockquote, pre, figure)) {
+    margin: 1em 0;
+  }
+
+  .post :global(img) {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 35vh;
+    margin: 0 auto;
+  }
+
+  /* On wide screens, images sit to the left with the text flowing around them. */
+  @media (min-width: 825px) {
+    .post :global(img) {
+      float: left;
+      margin: 1em;
+    }
+  }
+
+  /* ...except where a post asks for a centred one, and in collections. */
+  .post :global(.centered img),
+  .collection :global(img) {
+    float: none;
+    margin: 1em auto;
+  }
+
+  .collection :global(h2) {
+    text-align: center;
+  }
+
+  .post :global(figcaption) {
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .post :global(pre) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    padding-left: 50px;
+  }
+
+  .post :global(hr) {
+    border: none;
+    border-top: 1px solid var(--muted);
+    width: calc(100% - 5ch);
+    margin: 1em auto;
+  }
+
+  .post :global(blockquote) {
+    font-style: italic;
+    padding-left: 50px;
+    border-left: 2px solid var(--muted);
+    background: var(--surface);
+  }
+
+  /* Embedded videos: shrink to fit narrow screens, keeping the 16:9 shape. */
+  .post :global(iframe) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 1em auto;
+  }
+</style>

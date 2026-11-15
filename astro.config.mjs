@@ -7,6 +7,20 @@ export default defineConfig({
   // e.g. links in the RSS feed and canonical <link> tags.
   site: 'https://rehanzo.com',
 
+  // Build each page as a file (blog/on-online-chess.html) rather than a folder
+  // (blog/on-online-chess/index.html). The host serves it at both
+  // /blog/on-online-chess and /blog/on-online-chess.html, so links to the old
+  // Jekyll blog keep working either way.
+  build: {
+    format: 'file',
+  },
+
+  // Prism highlights code with CSS classes (styled in src/styles/prism.css).
+  // Astro's default, Shiki, uses inline styles, which the CSP below would block.
+  markdown: {
+    syntaxHighlight: 'prism',
+  },
+
   // Content Security Policy: tells browsers what each page may load. Astro adds
   // a <meta> tag to every page, allowing only the scripts and styles it built
   // itself (by hash). Everything not listed here is blocked.
@@ -15,7 +29,10 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'none'",
-        "img-src 'self'",
+        // Wikipedia: the album cover in the Gil Scott-Heron post.
+        "img-src 'self' https://upload.wikimedia.org",
+        // YouTube embeds (privacy-enhanced domain).
+        "frame-src https://www.youtube-nocookie.com",
         "base-uri 'none'",
         "form-action 'none'",
       ],

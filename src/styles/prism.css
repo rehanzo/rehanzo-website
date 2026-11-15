@@ -1,0 +1,46 @@
+/*
+ * Gruvbox colours for code blocks. Prism (the syntax highlighter) wraps each
+ * piece of code in a <span class="token keyword">, <span class="token string">,
+ * etc.; these rules colour them.
+ */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #928374;
+  font-style: italic;
+}
+
+.token.keyword,
+.token.operator,
+.token.important {
+  color: #fe8019;
+}
+
+.token.string,
+.token.char,
+.token.attr-value {
+  color: #b8bb26;
+}
+
+.token.number,
+.token.boolean,
+.token.constant {
+  color: #d3869b;
+}
+
+.token.function,
+.token.builtin,
+.token.class-name {
+  color: #fabd2f;
+}
+
+.token.variable,
+.token.parameter {
+  color: #83a598;
+}
+
+.token.tag,
+.token.selector {
+  color: #fb4934;
+}

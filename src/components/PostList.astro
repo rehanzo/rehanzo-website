@@ -1,0 +1,18 @@
+---
+// Links to every post in one category, newest first.
+import { formatDate, getPosts, type Category } from "../lib/blog";
+
+interface Props {
+  category: Category;
+}
+
+const posts = await getPosts(Astro.props.category);
+---
+
+{
+  posts.map((post) => (
+    <a href={`/blog/${post.id}`}>
+      {post.data.title} · {formatDate(post.data.date)}
+    </a>
+  ))
+}

@@ -18,6 +18,25 @@ npm run preview    # serve the built dist/ locally
 - `public/` — copied to the site as-is (favicons, images, fonts).
 - `astro.config.mjs` — site-wide Astro configuration.
 
+## Writing a blog post
+
+Add a Markdown file to `src/content/blog/`. Its filename becomes the URL
+(`my-post.md` → `/blog/my-post`). Front matter:
+
+```yaml
+---
+title: My Post
+date: 2026-11-15
+categories: [tech] # any of: tech, life, music, collections
+---
+```
+
+Put images in `src/content/blog/images/` and reference them relatively
+(`![alt text](./images/photo.jpg)`); Astro converts them to WebP at build time.
+Keep them at most ~1200px on their longest side. Images float left beside the
+text on wide screens; wrap one in `<div class="centered">` (with blank lines
+around the Markdown inside) to centre it instead.
+
 ## Deployment
 
 Migrating from GitHub Pages to Cloudflare. Until the switch-over, GitHub Pages
