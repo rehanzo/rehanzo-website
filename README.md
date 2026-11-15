@@ -39,6 +39,12 @@ around the Markdown inside) to centre it instead.
 
 ## Deployment
 
-Migrating from GitHub Pages to Cloudflare. Until the switch-over, GitHub Pages
-still publishes the repository root from `master`, so do not merge this work into
-`master` before Cloudflare serves the site.
+Hosted on Cloudflare Workers (static assets), configured in `wrangler.jsonc`.
+
+```sh
+npm run deploy     # build, then upload dist/ to Cloudflare
+```
+
+`public/_headers` sets HTTP security headers Cloudflare adds to every response.
+The Content Security Policy itself is generated per page by Astro (see
+`security.csp` in `astro.config.mjs`).
