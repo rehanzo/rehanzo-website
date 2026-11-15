@@ -1,0 +1,54 @@
+/*
+ * Global styles: loaded on every page by src/layouts/Base.astro.
+ * Page-specific styles live in each page's own <style> block instead.
+ */
+
+/*
+ * Colour themes. Every colour on the site comes from these variables, so
+ * changing a palette means editing one block. The Base layout puts
+ * data-theme="..." on <html>, which picks the block that applies.
+ */
+[data-theme="gruvbox"] {
+  --bg: #282828;
+  --fg: #d4be98;
+  --muted: #a89984;
+  --surface: #32302f;
+  --link: #af99bf;
+  --accent: #a9b665;
+  --font-body: "Comic Neue", sans-serif;
+}
+
+/* "Ochre" palette, matching ~/.config/foot/foot.ini */
+[data-theme="ochre"] {
+  --bg: #eedfbb;
+  --fg: #2e1f10;
+  --muted: #574128; /* darkened from foot's #6a5232 for readability */
+  --surface: #e5d2a6;
+  --link: #2e1f10;
+  --accent: #3f6a2a;
+  --font-body: Inter, system-ui, sans-serif;
+}
+
+:root {
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Reset: browsers add default margins/padding to many elements; start from zero. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+}

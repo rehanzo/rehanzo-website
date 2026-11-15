@@ -1,0 +1,27 @@
+---
+// The shared page skeleton: <html>, <head>, and global CSS. Every page wraps
+// its content in <Base>, and that content is inserted where <slot /> is.
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  theme?: "gruvbox" | "ochre";
+}
+
+const { title, description, theme = "gruvbox" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
