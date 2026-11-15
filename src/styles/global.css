@@ -4,32 +4,19 @@
  */
 
 /*
- * Colour themes. Every colour on the site comes from these variables, so
- * changing a palette means editing one block. The Base layout puts
- * data-theme="..." on <html>, which picks the block that applies.
+ * Colours: the "Ochre" palette from ~/.config/foot/foot.ini. Every colour on
+ * the site comes from these variables, so changing the palette means editing
+ * only this block.
  */
-[data-theme="gruvbox"] {
-  --bg: #282828;
-  --fg: #d4be98;
-  --muted: #a89984;
-  --surface: #32302f;
-  --link: #af99bf;
-  --accent: #a9b665;
-  --font-body: "Comic Neue", sans-serif;
-}
-
-/* "Ochre" palette, matching ~/.config/foot/foot.ini */
-[data-theme="ochre"] {
+:root {
   --bg: #eedfbb;
   --fg: #2e1f10;
   --muted: #574128; /* darkened from foot's #6a5232 for readability */
   --surface: #e5d2a6;
-  --link: #2e1f10;
-  --accent: #3f6a2a;
-  --font-body: Inter, system-ui, sans-serif;
-}
+  --link: #7a2d5c; /* foot regular5, "madder ink" */
+  --accent: #3f6a2a; /* foot regular2, green */
 
-:root {
+  --font-body: "Comic Neue", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 

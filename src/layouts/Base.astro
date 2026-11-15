@@ -6,14 +6,13 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
-  theme?: "gruvbox" | "ochre";
 }
 
-const { title, description, theme = "gruvbox" } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme={theme}>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

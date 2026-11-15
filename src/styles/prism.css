@@ -1,46 +1,47 @@
 /*
- * Gruvbox colours for code blocks. Prism (the syntax highlighter) wraps each
- * piece of code in a <span class="token keyword">, <span class="token string">,
- * etc.; these rules colour them.
+ * Code block colours, from the ANSI colours of the Ochre palette in
+ * ~/.config/foot/foot.ini. Prism (the syntax highlighter) wraps each piece of
+ * code in a <span class="token keyword">, <span class="token string">, etc.;
+ * these rules colour them.
  */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #928374;
+  color: #8a6a3e; /* bright0 */
   font-style: italic;
 }
 
 .token.keyword,
-.token.operator,
-.token.important {
-  color: #fe8019;
+.token.important,
+.token.tag,
+.token.selector {
+  color: #a3243a; /* regular1, red */
+}
+
+.token.operator {
+  color: #6b3a10; /* bright3 */
 }
 
 .token.string,
 .token.char,
 .token.attr-value {
-  color: #b8bb26;
+  color: #3f6a2a; /* regular2, green */
 }
 
 .token.number,
 .token.boolean,
 .token.constant {
-  color: #d3869b;
+  color: #7a2d5c; /* regular5, magenta */
 }
 
 .token.function,
 .token.builtin,
 .token.class-name {
-  color: #fabd2f;
+  color: #2b4f7a; /* regular4, blue */
 }
 
 .token.variable,
 .token.parameter {
-  color: #83a598;
-}
-
-.token.tag,
-.token.selector {
-  color: #fb4934;
+  color: #2f6560; /* regular6, cyan */
 }

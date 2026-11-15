@@ -4,7 +4,7 @@ import Badge from "../components/Badge.astro";
 import { cv } from "../data/cv";
 ---
 
-<Base title={`${cv.name} — CV`} description={cv.summary} theme="ochre">
+<Base title={`${cv.name} — CV`} description={cv.summary}>
   <main>
     <header>
       <h1>{cv.name}</h1>
@@ -98,6 +98,7 @@ import { cv } from "../data/cv";
 
 <style>
   main {
+    font-family: Inter, system-ui, sans-serif;
     max-width: 42rem;
     margin: 0 auto;
     padding: 1rem;
