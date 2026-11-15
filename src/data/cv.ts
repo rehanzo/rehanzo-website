@@ -28,9 +28,14 @@ export interface School {
   degrees: Degree[];
 }
 
+export interface SkillGroup {
+  label: string;
+  items: string[];
+}
+
 export interface Project {
   title: string;
-  kind: "Side Project" | "Contributor";
+  kind: "Work" | "Side Project" | "Contributor";
   tech: string[];
   description: string;
   link: { label: string; href: string };
@@ -44,11 +49,10 @@ export interface Cv {
   summary: string;
   website: string;
   email: string;
-  phone: string;
   social: Social[];
   work: Job[];
   education: School[];
-  skills: string[];
+  skills: SkillGroup[];
   projects: Project[];
 }
 
@@ -57,12 +61,11 @@ export const cv: Cv = {
   location: "Ajax, Ontario, EST",
   locationLink: "https://www.google.com/maps/place/Ajax,+ON",
   about:
-    "Wilfrid Laurier BBA & CS graduate with expertise in software development and data analysis. Adept in process automation, software QA, and ready to contribute to a tech-driven team.",
+    "AI Engineer at Kagi, building Kagi Assistant across the full LLM stack: model integrations, agents, retrieval, and the product people use.",
   summary:
-    "Honours graduate from Wilfrid Laurier University with dual expertise in Computer Science and Business Administration, I specialize in enhancing processes and analyzing data. Proficient in C, Python, Rust, R, and web technologies, I deliver solutions that bridge the gap between complex data and software development. Eager to contribute to innovative projects with a focus on precision and collaboration.",
+    "I'm an AI engineer at Kagi, where I've worked on Kagi Assistant since 2024, from wiring up models across every major provider to designing its agent architecture and the interface around it. I created and maintain Kagi's official MCP server. Before Kagi, I studied Computer Science and Business Administration at Wilfrid Laurier University. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
   website: "https://rehanzo.com",
   email: "rehan@rehanrana.com",
-  phone: "+1 647 904 4529",
   social: [
     { name: "GitHub", url: "https://github.com/rehanzo" },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/rehan-rana-0a79a0156/" },
@@ -73,7 +76,7 @@ export const cv: Cv = {
       link: "https://kagi.com",
       title: "AI Engineer",
       badges: ["Remote"],
-      start: "Apr. 2024",
+      start: "Apr 2024",
       end: "Present",
       highlights: [
         "Core engineer on Kagi Assistant, Kagi's AI assistant product, working across the full LLM stack from model integration to agent design and response rendering",
@@ -89,12 +92,11 @@ export const cv: Cv = {
       link: "https://wlu.ca",
       title: "Work-Study Program Coordinator",
       badges: ["Remote"],
-      start: "Oct. 2022",
+      start: "Oct 2022",
       end: "May 2023",
       highlights: [
-        "Overhauled the existing Excel tracking system through automation of various processes, achieving significant efficiency gains and reducing errors",
-        "Helped manage university work-study program, maintaining accurate tracking of data and assisting students through thoughtful email communication",
-        "Performed extensive research on work-study programs of other universities, synthesizing information and reporting findings to support internal strategic planning",
+        "Automated the program's Excel-based tracking, cutting manual work and errors",
+        "Researched other universities' work-study programs and reported findings to support planning",
       ],
     },
     {
@@ -102,13 +104,11 @@ export const cv: Cv = {
       link: "https://www.cysticfibrosis.ca/",
       title: "Data Analyst",
       badges: ["Remote"],
-      start: "Jul. 2022",
-      end: "Aug. 2022",
+      start: "Jul 2022",
+      end: "Aug 2022",
       highlights: [
-        "Managed end-to-end processing of numerous data inquiries from external researchers, clinics, and CFC personnel",
-        "Liaised closely with requesters to refine preliminary requirements down into actionable specifics, ensuring alignment before initiating analysis",
-        "Conducted thorough analysis on raw patient data using R, based on established criteria",
-        "Led a project to develop a mutation resolving table, enhancing data quality and increasing the accuracy and efficiency of future analyses",
+        "Handled data requests from external researchers, clinics and staff end to end, from scoping each request to analysing patient registry data in R",
+        "Built a mutation resolving table that improved data quality for future analyses",
       ],
     },
     {
@@ -116,38 +116,10 @@ export const cv: Cv = {
       link: "https://www.cysticfibrosis.ca/",
       title: "QA Analyst",
       badges: [],
-      start: "Jul. 2019",
-      end: "Aug. 2019",
+      start: "Jul 2019",
+      end: "Aug 2019",
       highlights: [
-        "Spearheaded user acceptance testing (UAT) for new CFC registry feature set",
-        "Collaborated with developers, providing detailed bug reports to guarantee a reliable and robust final product",
-        "Developed a comprehensive user manual for clinicians and practitioners, facilitating adoption and utilization of the newly incorporated feature set",
-        "Carried out rigorous data quality checks on patient data, reinforcing the integrity and reliability of the information held within the registry",
-      ],
-    },
-    {
-      company: "Wilfrid Laurier University",
-      link: "https://wlu.ca",
-      title: "Data Entry Clerk",
-      badges: [],
-      start: "Mar. 2019",
-      end: "Apr. 2019",
-      highlights: [
-        "Scanned, entered, sorted, and verified ministry OSAP data",
-        "Adhered to stringent data entry guidelines",
-      ],
-    },
-    {
-      company: "Super Clean Laundromat",
-      link: "https://supercleanlaundromat.ca",
-      title: "Laundromat Manager",
-      badges: [],
-      start: "May 2018",
-      end: "Aug. 2018",
-      highlights: [
-        "Actively aided self-serve customers with operation of washing and drying machines, ensuring customer satisfaction",
-        "Managed end-to-end laundry procedures including weighing clothing, providing time estimates, coordinating wash and fold orders, and handling cash transactions, ensuring effective customer service and order accuracy",
-        "Demonstrated ability to work efficiently and effectively with minimal supervision",
+        "Led user acceptance testing for a new patient registry feature set, and wrote its user manual for clinicians",
       ],
     },
   ],
@@ -157,89 +129,110 @@ export const cv: Cv = {
       degrees: [
         {
           degree: "Bachelor's Degree in Computer Science",
-          detail: "In-major GPA: 10.20/12 (Honours)",
+          detail: "Honours",
           start: "2021",
-          end: "Aug. 2023",
+          end: "Aug 2023",
         },
         {
           degree: "Bachelor's Degree in Business Administration",
-          detail: "GPA: 9.85/12 (Honours)",
+          detail: "Honours",
           start: "2017",
-          end: "Apr. 2021",
+          end: "Apr 2021",
         },
       ],
     },
   ],
   skills: [
-    "C",
-    "Python",
-    "Java",
-    "Linux",
-    "Bash",
-    "Git",
-    "Rust",
-    "JavaScript",
-    "R",
-    "Excel",
-    "C++",
-    "SQL",
-    "Go",
-    "HTML",
-    "CSS",
-    "TypeScript",
-    "Selenium",
-    "PHP",
-    "Docker",
+    {
+      label: "Languages",
+      items: ["Python", "TypeScript", "Rust", "C", "C++", "SQL", "Bash"],
+    },
+    {
+      label: "AI",
+      items: [
+        "Pydantic AI",
+        "OpenAI, Anthropic, Google, Mistral APIs",
+        "Agents",
+        "MCP",
+        "Retrieval",
+        "Evals",
+      ],
+    },
+    {
+      label: "Web & Infra",
+      items: [
+        "FastAPI",
+        "SvelteKit",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions",
+        "Linux",
+      ],
+    },
   ],
   projects: [
     {
-      title: "Multithreaded PageRank Simulator",
-      kind: "Side Project",
-      tech: ["C", "Open MPI"],
+      title: "Kagi MCP Server",
+      kind: "Work",
+      tech: ["Python", "MCP"],
       description:
-        "Simulates Google's PageRank algorithm using a multithreaded Open MPI C program, operating on Wikipedia data via a Linux supercomputer",
+        "Kagi's official Model Context Protocol server, letting AI agents like Claude search the web with Kagi",
       link: {
-        label: "github.com/rehanzo/PageRank-OpenMPI",
-        href: "https://github.com/rehanzo/PageRank-OpenMPI",
+        label: "github.com/kagisearch/kagimcp",
+        href: "https://github.com/kagisearch/kagimcp",
       },
     },
     {
-      title: "dyn-wall-rs",
+      title: "receipt-statement-linker",
       kind: "Side Project",
-      tech: ["Rust", "TOML"],
+      tech: ["Python", "LLMs"],
       description:
-        "Dynamically adjusts the wallpaper according to the sun's position throughout the day or user set schedules, and coordinates it with other applications",
+        "Uses LLMs to extract receipts and bank statements, then matches each receipt to its transaction for item-level budgeting",
       link: {
-        label: "github.com/rehanzo/dyn-wall-rs",
-        href: "https://github.com/rehanzo/dyn-wall-rs",
+        label: "github.com/rehanzo/receipt-statement-linker",
+        href: "https://github.com/rehanzo/receipt-statement-linker",
+      },
+    },
+    {
+      title: "poisoned-search-llm",
+      kind: "Side Project",
+      tech: ["Python", "LLMs"],
+      description:
+        "Hands an LLM search results rewritten around fictional facts, to see how models behave when the web itself is wrong",
+      link: {
+        label: "github.com/rehanzo/poisoned-search-llm",
+        href: "https://github.com/rehanzo/poisoned-search-llm",
       },
     },
     {
       title: "VisioNomicon",
       kind: "Side Project",
-      tech: ["Python", "GPT-4V"],
-      description: "Utility that leverages GPT-4V to rename image files based on their content",
+      tech: ["Python", "OpenAI API"],
+      description:
+        "Renames image files based on their content using GPT-4o, following a user-defined naming template",
       link: {
         label: "github.com/rehanzo/VisioNomicon",
         href: "https://github.com/rehanzo/VisioNomicon",
       },
     },
     {
-      title: "bootstub-updater",
+      title: "dyn-wall-rs",
       kind: "Side Project",
-      tech: ["Rust", "TOML"],
+      tech: ["Rust"],
       description:
-        "Manages an EFI boot stub system according to user specifications, ensuring the most recently installed kernel is booted",
+        "Changes the wallpaper with the sun's position through the day or a user-set schedule, and keeps other applications in sync with it",
       link: {
-        label: "github.com/rehanzo/bootstub-updater",
-        href: "https://github.com/rehanzo/bootstub-updater",
+        label: "github.com/rehanzo/dyn-wall-rs",
+        href: "https://github.com/rehanzo/dyn-wall-rs",
       },
     },
     {
       title: "swayhide",
       kind: "Side Project",
       tech: ["Rust"],
-      description: "Window swallower for SwayWM",
+      description: "Window swallower for the Sway window manager",
       link: {
         label: "github.com/rehanzo/swayhide",
         href: "https://github.com/rehanzo/swayhide",
@@ -248,29 +241,18 @@ export const cv: Cv = {
     {
       title: "SwayFX",
       kind: "Contributor",
-      tech: ["C", "OpenGL", "GLES2"],
-      description: "SwayFX: Sway, but with eye candy!",
+      tech: ["C", "OpenGL ES"],
+      description: "Sway, but with eye candy: blur, shadows and rounded corners",
       link: {
-        label: "github.com/WillPower3309/swayfx",
-        href: "https://github.com/WillPower3309/swayfx",
-      },
-    },
-    {
-      title: "easyChatGPT",
-      kind: "Contributor",
-      tech: ["Python", "ChatGPT", "Selenium"],
-      description:
-        "An unofficial yet elegant interface of the ChatGPT API using browser automation that bypasses cloudflare detection and recaptchas",
-      link: {
-        label: "github.com/LanLan69/easyChatGPT",
-        href: "https://github.com/LanLan69/easyChatGPT",
+        label: "github.com/wlrfx/swayfx",
+        href: "https://github.com/wlrfx/swayfx",
       },
     },
     {
       title: "Waybar",
       kind: "Contributor",
-      tech: ["C++", "Meson", "GTK", "wlroots"],
-      description: "Highly customizable Wayland bar for Sway and Wlroots based compositors",
+      tech: ["C++", "GTK"],
+      description: "Highly customizable status bar for Sway and other wlroots-based compositors",
       link: {
         label: "github.com/Alexays/Waybar",
         href: "https://github.com/Alexays/Waybar",
@@ -280,7 +262,7 @@ export const cv: Cv = {
       title: "hy3",
       kind: "Contributor",
       tech: ["C++", "Hyprland"],
-      description: "Hyprland plugin for an i3/sway like manual tiling layout",
+      description: "Hyprland plugin for i3/Sway-style manual tiling",
       link: {
         label: "github.com/outfoxxed/hy3",
         href: "https://github.com/outfoxxed/hy3",

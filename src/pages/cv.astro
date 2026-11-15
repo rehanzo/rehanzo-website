@@ -12,7 +12,6 @@ import { cv } from "../data/cv";
       <p class="location"><a href={cv.locationLink}>{cv.location}</a></p>
       <ul class="contact">
         <li><a href={`mailto:${cv.email}`}>{cv.email}</a></li>
-        <li><a href={`tel:${cv.phone.replaceAll(" ", "")}`}>{cv.phone}</a></li>
         {cv.social.map((s) => <li><a href={s.url}>{s.name}</a></li>)}
       </ul>
     </header>
@@ -67,9 +66,20 @@ import { cv } from "../data/cv";
 
     <section>
       <h2>Skills</h2>
-      <div class="badges">
-        {cv.skills.map((s) => <Badge variant="solid">{s}</Badge>)}
-      </div>
+      <dl class="skills">
+        {
+          cv.skills.map((group) => (
+            <div class="skill-group">
+              <dt>{group.label}</dt>
+              <dd class="badges">
+                {group.items.map((s) => (
+                  <Badge variant="solid">{s}</Badge>
+                ))}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
     </section>
 
     <section class="projects">
@@ -223,6 +233,34 @@ import { cv } from "../data/cv";
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem;
+  }
+
+  /* Skills: a label column on the left, its badges on the right. */
+  .skills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-group {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  /* Phones: stack the label above its badges. */
+  @media (max-width: 480px) {
+    .skill-group {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
   }
 
   /* Projects: 1 column on phones, 2 on tablets, 3 on desktops.
