@@ -61,9 +61,9 @@ export const cv: Cv = {
   location: "Ajax, Ontario, EST",
   locationLink: "https://www.google.com/maps/place/Ajax,+ON",
   about:
-    "AI Engineer at Kagi, building Kagi Assistant across the full LLM stack: model integrations, agents, retrieval, and the product people use.",
+    "AI Engineer at Kagi, working on agents, retrieval and model integrations for Kagi Assistant.",
   summary:
-    "I'm an AI engineer at Kagi, where I've worked on Kagi Assistant since 2024: I prototyped its agentic architecture, built its retrieval agent, and helped rebuild it on Pydantic AI. I also created and maintain Kagi's official MCP server. Before Kagi, I studied Computer Science and Business Administration at Wilfrid Laurier University. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
+    "Since 2024 I've worked on Kagi Assistant: I prototyped its agentic architecture, built its retrieval agent, and helped rebuild it on Pydantic AI. I also created and maintain Kagi's official MCP server. Before Kagi, I studied Computer Science and Business Administration at Wilfrid Laurier University. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
   website: "https://rehanzo.com",
   email: "rehan@rehanrana.com",
   social: [
@@ -81,11 +81,11 @@ export const cv: Cv = {
       highlights: [
         "Prototyped the agentic, tool-calling loop that replaced Kagi Assistant's fixed multi-model pipeline (one model flagging research, another doing it, a third writing the answer); the prototype became the architecture behind the whole product",
         "Major contributor to a ground-up rewrite of the Assistant's agent stack onto Pydantic AI, replacing its custom in-house framework",
-        "Designed and built Librarian, a retrieval sub-agent that reads whole documents and web pages, then returns excerpts, the full content, or a direct answer depending on what the query needs, removing the need to guess between chunks and full context up front; it powered all document and web retrieval for a long time and is still heavily used",
+        "Created and maintain Kagi's official open-source MCP server (500+ GitHub stars), letting AI agents like Claude use Kagi Search; also published Kagi's Python API SDK to PyPI",
+        "Designed and built Librarian, a retrieval sub-agent that reads whole documents and web pages and returns excerpts, full content or a direct answer as each query needs; it powered all document and web retrieval and remains heavily used",
         "Built and maintained the content extraction pipelines behind retrieval, covering web pages, documents, YouTube transcripts and Reddit threads, with provider fallbacks for reliability",
         "Integrated and maintained models from all major AI providers, improving reliability and cost through prompt caching, failover and usage tracking",
         "Led development of a context management panel that lets users inspect and control what the Assistant is working with",
-        "Created and maintain Kagi's official open-source MCP server (500+ GitHub stars), letting AI agents like Claude use Kagi Search; also published Kagi's Python API SDK to PyPI",
         "Built evaluation and benchmarking tooling to measure answer quality and guide model and prompt decisions",
       ],
     },
@@ -186,6 +186,38 @@ export const cv: Cv = {
       },
     },
     {
+      title: "dyn-wall-rs",
+      kind: "Side Project",
+      tech: ["Rust"],
+      description:
+        "Changes the wallpaper with the sun's position through the day or a user-set schedule, and keeps other applications in sync with it",
+      link: {
+        label: "github.com/rehanzo/dyn-wall-rs",
+        href: "https://github.com/rehanzo/dyn-wall-rs",
+      },
+    },
+    {
+      title: "swayhide",
+      kind: "Side Project",
+      tech: ["Rust"],
+      description: "Window swallower for the Sway window manager",
+      link: {
+        label: "github.com/rehanzo/swayhide",
+        href: "https://github.com/rehanzo/swayhide",
+      },
+    },
+    {
+      title: "VisioNomicon",
+      kind: "Side Project",
+      tech: ["Python", "OpenAI API"],
+      description:
+        "Renames image files based on their content using GPT-4o, following a user-defined naming template",
+      link: {
+        label: "github.com/rehanzo/VisioNomicon",
+        href: "https://github.com/rehanzo/VisioNomicon",
+      },
+    },
+    {
       title: "receipt-statement-linker",
       kind: "Side Project",
       tech: ["Python", "LLMs"],
@@ -205,38 +237,6 @@ export const cv: Cv = {
       link: {
         label: "github.com/rehanzo/poisoned-search-llm",
         href: "https://github.com/rehanzo/poisoned-search-llm",
-      },
-    },
-    {
-      title: "VisioNomicon",
-      kind: "Side Project",
-      tech: ["Python", "OpenAI API"],
-      description:
-        "Renames image files based on their content using GPT-4o, following a user-defined naming template",
-      link: {
-        label: "github.com/rehanzo/VisioNomicon",
-        href: "https://github.com/rehanzo/VisioNomicon",
-      },
-    },
-    {
-      title: "dyn-wall-rs",
-      kind: "Side Project",
-      tech: ["Rust"],
-      description:
-        "Changes the wallpaper with the sun's position through the day or a user-set schedule, and keeps other applications in sync with it",
-      link: {
-        label: "github.com/rehanzo/dyn-wall-rs",
-        href: "https://github.com/rehanzo/dyn-wall-rs",
-      },
-    },
-    {
-      title: "swayhide",
-      kind: "Side Project",
-      tech: ["Rust"],
-      description: "Window swallower for the Sway window manager",
-      link: {
-        label: "github.com/rehanzo/swayhide",
-        href: "https://github.com/rehanzo/swayhide",
       },
     },
     {
