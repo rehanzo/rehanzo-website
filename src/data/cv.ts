@@ -79,7 +79,7 @@ export const cv: Cv = {
       start: "Apr 2024",
       end: "Present",
       highlights: [
-        "Prototyped the agentic, tool-calling loop that replaced Kagi Assistant's fixed multi-model pipeline (one model flagging research, another doing it, a third writing the answer); the prototype became the architecture behind the whole product",
+        "Prototyped the agentic, tool-calling loop that replaced Kagi Assistant's fixed multi-model pipeline; the prototype became the architecture behind the whole product",
         "Major contributor to a ground-up rewrite of the Assistant's agent stack onto Pydantic AI, replacing its custom in-house framework",
         "Created and maintain Kagi's official open-source MCP server (500+ GitHub stars), letting AI agents like Claude use Kagi Search; also published Kagi's Python API SDK to PyPI",
         "Designed and built Librarian, a retrieval sub-agent that reads whole documents and web pages and returns excerpts, full content or a direct answer as each query needs; it powered all document and web retrieval and remains heavily used",
