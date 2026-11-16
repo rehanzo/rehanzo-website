@@ -63,7 +63,7 @@ export const cv: Cv = {
   about:
     "AI Engineer at Kagi, building Kagi Assistant across the full LLM stack: model integrations, agents, retrieval, and the product people use.",
   summary:
-    "I'm an AI engineer at Kagi, where I've worked on Kagi Assistant since 2024, from wiring up models across every major provider to designing its agent architecture and the interface around it. I created and maintain Kagi's official MCP server. Before Kagi, I studied Computer Science and Business Administration at Wilfrid Laurier University. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
+    "I'm an AI engineer at Kagi, where I've worked on Kagi Assistant since 2024: I prototyped its agentic architecture, built its retrieval agent, and helped rebuild it on Pydantic AI. I also created and maintain Kagi's official MCP server. Before Kagi, I studied Computer Science and Business Administration at Wilfrid Laurier University. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
   website: "https://rehanzo.com",
   email: "rehan@rehanrana.com",
   social: [
@@ -79,11 +79,13 @@ export const cv: Cv = {
       start: "Apr 2024",
       end: "Present",
       highlights: [
-        "Core engineer on Kagi Assistant, Kagi's AI assistant product, working across the full LLM stack from model integration to agent design and response rendering",
-        "Created and maintain Kagi's official open-source MCP server (500+ GitHub stars), letting AI agents like Claude use Kagi Search; also published Kagi's Python API SDK to PyPI",
-        "Major contributor to a ground-up rewrite of the Assistant's agent architecture, and led development of a context management panel that lets users inspect and control what the Assistant is working with",
-        "Built the retrieval layer that gives the Assistant access to web content and user documents, with provider fallbacks for reliability",
+        "Prototyped the agentic, tool-calling loop that replaced Kagi Assistant's fixed multi-model pipeline (one model flagging research, another doing it, a third writing the answer); the prototype became the architecture behind the whole product",
+        "Major contributor to a ground-up rewrite of the Assistant's agent stack onto Pydantic AI, replacing its custom in-house framework",
+        "Designed and built Librarian, a retrieval sub-agent that reads whole documents and web pages, then returns excerpts, the full content, or a direct answer depending on what the query needs, removing the need to guess between chunks and full context up front; it powered all document and web retrieval for a long time and is still heavily used",
+        "Built and maintained the content extraction pipelines behind retrieval, covering web pages, documents, YouTube transcripts and Reddit threads, with provider fallbacks for reliability",
         "Integrated and maintained models from all major AI providers, improving reliability and cost through prompt caching, failover and usage tracking",
+        "Led development of a context management panel that lets users inspect and control what the Assistant is working with",
+        "Created and maintain Kagi's official open-source MCP server (500+ GitHub stars), letting AI agents like Claude use Kagi Search; also published Kagi's Python API SDK to PyPI",
         "Built evaluation and benchmarking tooling to measure answer quality and guide model and prompt decisions",
       ],
     },
@@ -162,7 +164,6 @@ export const cv: Cv = {
       label: "Web & Infra",
       items: [
         "FastAPI",
-        "SvelteKit",
         "PostgreSQL",
         "Redis",
         "Docker",
