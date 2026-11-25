@@ -28,11 +28,6 @@ export interface School {
   degrees: Degree[];
 }
 
-export interface SkillGroup {
-  label: string;
-  items: string[];
-}
-
 export interface Project {
   title: string;
   kind: "Work" | "Side Project" | "Contributor";
@@ -52,14 +47,13 @@ export interface Cv {
   social: Social[];
   work: Job[];
   education: School[];
-  skills: SkillGroup[];
   projects: Project[];
 }
 
 export const cv: Cv = {
   name: "Rehan A. Rana",
-  location: "Ajax, Ontario, EST",
-  locationLink: "https://www.google.com/maps/place/Ajax,+ON",
+  location: "Toronto, Ontario, EST",
+  locationLink: "https://www.google.com/maps/place/Toronto,+ON",
   about:
     "AI Engineer at Kagi, working on agents, retrieval and model integrations for Kagi Assistant.",
   summary:
@@ -141,35 +135,6 @@ export const cv: Cv = {
           start: "2017",
           end: "Apr 2021",
         },
-      ],
-    },
-  ],
-  skills: [
-    {
-      label: "Languages",
-      items: ["Python", "TypeScript", "Rust", "C", "C++", "SQL", "Bash"],
-    },
-    {
-      label: "AI",
-      items: [
-        "Pydantic AI",
-        "OpenAI, Anthropic, Google, Mistral APIs",
-        "Agents",
-        "MCP",
-        "Retrieval",
-        "Evals",
-      ],
-    },
-    {
-      label: "Web & Infra",
-      items: [
-        "FastAPI",
-        "PostgreSQL",
-        "Redis",
-        "Docker",
-        "Kubernetes",
-        "GitHub Actions",
-        "Linux",
       ],
     },
   ],

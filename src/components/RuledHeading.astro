@@ -1,0 +1,96 @@
+---
+// Adapted from Quickshell's PanelHeader: a curled ink rule, rubric dot, and
+// gilt star. Only the middle line stretches; the ornaments keep their shape.
+---
+
+<div class="heading">
+  {[false, true].map((mirrored) => (
+    <>
+      {mirrored && <h2><slot /></h2>}
+      <span class:list={["rule", { mirrored }]} aria-hidden="true">
+        <svg class="curl" width="21" height="20" viewBox="0 -10 21 20" focusable="false">
+          <path d="M 21 -2 L 17.4 -2 C 12.4 -2 9.4 0 7.4 3.5 C 5.4 7 0.9 7.5 0.4 4 C 0 1 3.9 0 4.4 2" />
+          <circle cx="10.4" cy="-5.5" r="1" />
+        </svg>
+        <svg class="line" height="20" viewBox="0 -10 100 20" preserveAspectRatio="none" focusable="false">
+          <path d="M 0 -2 C 18 -2 36 1 52 1 C 64 1 80 -2 100 -2" vector-effect="non-scaling-stroke" />
+        </svg>
+        <svg class="star" width="22" height="20" viewBox="0 -10 22 20" focusable="false">
+          <path class="join" d="M 0 -2 C 6 -2 11 -1.8 16 0" />
+          <path class="gilt" d="M 16 -6 Q 17.2 -1.2 20.6 0 Q 17.2 1.2 16 6.6 Q 14.8 1.2 11.4 0 Q 14.8 -1.2 16 -6 Z" />
+        </svg>
+      </span>
+    </>
+  ))}
+</div>
+
+<style>
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    width: 100%;
+    break-after: avoid;
+  }
+
+  h2 {
+    flex: 0 1 auto;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .rule {
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 43px;
+  }
+
+  .mirrored {
+    transform: scaleX(-1);
+  }
+
+  svg {
+    display: block;
+    overflow: visible;
+    fill: none;
+    stroke: var(--fg);
+    stroke-width: 0.85;
+    stroke-linecap: round;
+  }
+
+  .curl,
+  .star {
+    flex: 0 0 auto;
+  }
+
+  .line {
+    width: 0;
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  circle {
+    fill: var(--cv-rubric);
+    stroke: none;
+  }
+
+  .gilt {
+    fill: var(--cv-gilt);
+    stroke: var(--cv-rust);
+    stroke-width: 0.7;
+  }
+
+  @media (max-width: 600px) {
+    .heading {
+      gap: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.125rem;
+    }
+  }
+</style>

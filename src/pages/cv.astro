@@ -1,12 +1,18 @@
 ---
 import Base from "../layouts/Base.astro";
 import Badge from "../components/Badge.astro";
+import RuledHeading from "../components/RuledHeading.astro";
 import { cv } from "../data/cv";
 ---
 
 <Base title={`${cv.name} — CV`} description={cv.summary}>
   <main>
     <header>
+      <div class="masthead">
+        <img src="/cv-flourish.svg" width="90" height="28" alt="" />
+        <span>Curriculum vitae</span>
+        <img class="mirrored" src="/cv-flourish.svg" width="90" height="28" alt="" />
+      </div>
       <h1>{cv.name}</h1>
       <p class="about">{cv.about}</p>
       <p class="location"><a href={cv.locationLink}>{cv.location}</a></p>
@@ -17,15 +23,15 @@ import { cv } from "../data/cv";
     </header>
 
     <section>
-      <h2>About</h2>
+      <RuledHeading>About</RuledHeading>
       <p class="summary">{cv.summary}</p>
     </section>
 
     <section>
-      <h2>Work Experience</h2>
+      <RuledHeading>Work Experience</RuledHeading>
       {
         cv.work.map((job) => (
-          <article>
+          <article class="job">
             <div class="row">
               <h3>
                 <a href={job.link}>{job.company}</a>
@@ -45,7 +51,7 @@ import { cv } from "../data/cv";
     </section>
 
     <section>
-      <h2>Education</h2>
+      <RuledHeading>Education</RuledHeading>
       {
         cv.education.map((school) => (
           <article>
@@ -64,26 +70,8 @@ import { cv } from "../data/cv";
       }
     </section>
 
-    <section>
-      <h2>Skills</h2>
-      <dl class="skills">
-        {
-          cv.skills.map((group) => (
-            <div class="skill-group">
-              <dt>{group.label}</dt>
-              <dd class="badges">
-                {group.items.map((s) => (
-                  <Badge variant="solid">{s}</Badge>
-                ))}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
-    </section>
-
     <section class="projects">
-      <h2>Projects</h2>
+      <RuledHeading>Projects</RuledHeading>
       <div class="grid">
         {
           cv.projects.map((p) => (
@@ -108,45 +96,91 @@ import { cv } from "../data/cv";
 
 <style>
   main {
-    font-family: Inter, system-ui, sans-serif;
-    max-width: 42rem;
-    margin: 0 auto;
-    padding: 1rem;
+    /* Quickshell's Ochre palette and RuledFrame: ink, lapis, then sap green. */
+    --cv-rule: #bfa476;
+    --cv-rust: #6b3a10;
+    --cv-lapis: #2c4c9c;
+    --cv-green: #3f6a2a;
+    --cv-gilt: #c0903e;
+    --cv-rubric: #b5361f;
+    font-family: "Styrene B", Inter, system-ui, sans-serif;
+    position: relative;
+    isolation: isolate;
+    width: calc(100% - 3rem);
+    max-width: 56rem;
+    margin: 2rem auto;
+    padding: 2.5rem 3.5rem 3.5rem;
+    border: 1px solid var(--fg);
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
+    line-height: 1.65;
   }
 
-  /* Wider screens get more breathing room. */
-  @media (min-width: 768px) {
-    main {
-      padding: 4rem 1rem;
-    }
+  main::before,
+  main::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid;
+  }
+
+  main::before {
+    inset: 4px;
+    border-color: var(--cv-lapis);
+    border-radius: 8px;
+  }
+
+  main::after {
+    inset: 8px;
+    border-color: var(--cv-green);
+    border-radius: 4px;
   }
 
   a {
-    color: inherit;
-    text-decoration: none;
+    color: var(--cv-rust);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
   }
 
   a:hover {
-    text-decoration: underline;
+    color: var(--link);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--cv-lapis);
+    outline-offset: 4px;
+    border-radius: 2px;
   }
 
   h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    margin-top: 0.375rem;
   }
 
   h3 {
-    font-size: 1rem;
+    min-width: 0;
+    font-size: 1.0625rem;
     font-weight: 600;
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
+  }
+
+  h3 a {
+    color: var(--fg);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  h3 a:hover {
+    color: var(--cv-rust);
+    text-decoration: underline;
   }
 
   header,
@@ -156,177 +190,217 @@ import { cv } from "../data/cv";
   }
 
   header {
-    gap: 0.375rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .masthead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--cv-rust);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .masthead img {
+    flex: 0 0 auto;
+  }
+
+  .mirrored {
+    transform: scaleX(-1);
   }
 
   section {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
-  .about,
-  .summary,
-  .location,
-  .contact,
-  .role,
-  .dates,
-  .detail,
-  .print-only {
-    font-family: var(--font-mono);
-  }
-
-  .about,
-  .summary {
-    font-size: 0.875rem;
+  .about {
+    max-width: 36rem;
+    text-wrap: balance;
     color: var(--muted);
+  }
+
+  .summary {
     text-wrap: pretty;
   }
 
   .location,
-  .detail {
-    font-size: 0.75rem;
+  .contact,
+  .dates,
+  .print-only {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
     color: var(--muted);
+  }
+
+  .location a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .location a:hover {
+    text-decoration: underline;
   }
 
   .contact {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 1rem;
-    font-size: 0.8125rem;
-    color: var(--muted);
+    justify-content: center;
+    gap: 0.375rem 1.25rem;
   }
 
-  /* A row with something on the left and dates pushed to the right. */
+  .contact a {
+    overflow-wrap: anywhere;
+  }
+
   .row {
     display: flex;
-    flex-wrap: wrap; /* on narrow screens, dates drop below instead of squashing */
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.5rem;
+    gap: 0.25rem 1rem;
   }
 
-  .role,
-  .dates {
-    font-size: 0.875rem;
+  .role {
+    color: var(--cv-rust);
+    font-size: 1rem;
   }
 
   .dates {
-    color: var(--muted);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
 
+  .job + .job {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--cv-rule);
+  }
+
   .highlights {
-    margin-top: 0.5rem;
-    padding-left: 1rem;
-    font-size: 0.75rem;
+    margin-top: 0.75rem;
+    padding-left: 1.15rem;
+    font-size: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.5rem;
+  }
+
+  .highlights li::marker {
+    color: var(--cv-rust);
+    font-size: 0.8em;
   }
 
   .degree {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .detail {
+    font-size: 0.875rem;
+    color: var(--muted);
   }
 
   .badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.375rem;
+    min-width: 0;
   }
 
-  /* Skills: a label column on the left, its badges on the right. */
-  .skills {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .skill-group {
-    display: grid;
-    grid-template-columns: 7rem minmax(0, 1fr);
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-
-  dt {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    color: var(--muted);
-  }
-
-  /* Phones: stack the label above its badges. */
-  @media (max-width: 480px) {
-    .skill-group {
-      grid-template-columns: 1fr;
-      gap: 0.25rem;
-    }
-  }
-
-  /* Projects: 1 column on phones, 2 on tablets, 3 on desktops.
-     minmax(0, 1fr) lets columns shrink below their longest word, so long text
-     can't push the grid wider than the page. */
   .grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  @media (min-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 
   .card {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    border: 1px solid var(--surface);
-    border-radius: 0.5rem;
-    padding: 0.75rem;
+    gap: 0.625rem;
+    border: 1px solid var(--cv-rule);
+    border-radius: 9px;
+    background: var(--surface);
+    padding: 1.125rem;
   }
 
-  /* Push the tags to the bottom so cards in a row line up. */
+  .card .detail {
+    font-size: 1rem;
+    color: var(--fg);
+  }
+
   .card .badges {
     margin-top: auto;
-    padding-top: 0.5rem;
-  }
-
-  /* The little green dot after each project title. */
-  .card h3 a::after {
-    content: "";
-    display: inline-block;
-    width: 0.25rem;
-    height: 0.25rem;
-    margin-left: 0.25rem;
-    vertical-align: middle;
-    border-radius: 50%;
-    background: var(--accent);
+    padding-top: 0.375rem;
   }
 
   .print-only {
     display: none;
-    overflow-wrap: anywhere; /* long URLs may break anywhere rather than overflow */
+    overflow-wrap: anywhere;
   }
 
-  /* Print / "Save as PDF" version. */
+  @media (max-width: 600px) {
+    main {
+      width: calc(100% - 1rem);
+      margin: 0.5rem auto;
+      padding: 1.5rem 1.375rem 2rem;
+      gap: 2rem;
+    }
+
+    .masthead {
+      gap: 0.5rem;
+      letter-spacing: 0.07em;
+    }
+
+    .masthead img {
+      width: 54px;
+      height: auto;
+    }
+
+    .contact {
+      gap: 0.375rem 1rem;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media print {
     main {
+      width: 100%;
+      max-width: none;
+      margin: 0;
       padding: 0;
+      border: none;
       gap: 1.5rem;
+      line-height: 1.45;
+    }
+
+    main::before,
+    main::after {
+      display: none;
     }
 
     .print-only {
       display: block;
       font-size: 0.75rem;
-      text-decoration: underline;
+    }
+
+    .job,
+    .degree,
+    .card,
+    header {
+      break-inside: avoid;
+    }
+
+    .highlights,
+    .summary,
+    .card .detail {
+      font-size: 0.875rem;
     }
 
     .projects {
@@ -334,8 +408,17 @@ import { cv } from "../data/cv";
     }
 
     .grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .card {
+      padding: 0.75rem;
+      gap: 0.375rem;
+    }
+
+    .card {
+      background: transparent;
     }
   }
 </style>
