@@ -1,8 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  integrations: [mdx()],
+
   // The site's public address. Astro uses it to build absolute URLs,
   // e.g. links in the RSS feed and canonical <link> tags.
   site: 'https://rehanzo.com',
@@ -13,6 +16,9 @@ export default defineConfig({
   // Jekyll blog keep working either way.
   build: {
     format: 'file',
+    // MDX combines component styles after CSP hashes are collected. External
+    // stylesheets keep those styles covered by the existing 'self' policy.
+    inlineStylesheets: 'never',
   },
 
   // Prism highlights code with CSS classes (styled in src/styles/prism.css).

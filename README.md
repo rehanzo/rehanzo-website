@@ -6,7 +6,7 @@ Personal site (homepage, blog, CV) built with [Astro](https://astro.build).
 
 ```sh
 npm install        # install dependencies
-npm run dev        # dev server with live reload at http://localhost:4321
+npm run dev -- --background # dev server with live reload at http://localhost:4321
 npm run build      # build the static site into dist/
 npm run preview    # serve the built dist/ locally
 ```
@@ -20,8 +20,9 @@ npm run preview    # serve the built dist/ locally
 
 ## Writing a blog post
 
-Add a Markdown file to `src/content/blog/`. Its filename becomes the URL
-(`my-post.md` → `/blog/my-post`). Front matter:
+Add a Markdown (`.md`) or MDX (`.mdx`) file to `src/content/blog/`. Its filename
+without the extension becomes the URL (`my-post.mdx` → `/blog/my-post`). Use a
+unique filename across both formats. Front matter:
 
 ```yaml
 ---
@@ -36,6 +37,29 @@ Put images in `src/content/blog/images/` and reference them relatively
 Keep them at most ~1200px on their longest side. Images float left beside the
 text on wide screens; wrap one in `<div class="centered">` (with blank lines
 around the Markdown inside) to centre it instead.
+
+Use MDX when a post needs custom components. For example, create a component at
+`src/components/Diagram.astro`, import it after the post's front matter, and
+place it between paragraphs:
+
+```mdx
+import Diagram from '../../components/Diagram.astro';
+
+Some writing explaining the diagram.
+
+<Diagram />
+```
+
+Component scripts and styles are built by Astro and only loaded on pages that
+use them. Existing `.md` posts keep working unchanged.
+
+Interactive components should provide an RSS alternative when
+`Astro.locals.blogFeed` is true: render explanatory text or a static image with a
+link to the post instead of interactive controls. The feed removes browser
+scripts from the rendered HTML. Keep scripts in Astro `<script>` blocks and
+styles in `<style>` blocks so the production Content Security Policy can
+authorize them. Check the built site with `npm run preview`, since the policy
+is not enforced by the dev server.
 
 ## Deployment
 

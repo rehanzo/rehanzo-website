@@ -6,8 +6,8 @@ import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 const blog = defineCollection({
-  // Each .md file is one post; its filename (minus .md) is the URL slug.
-  loader: glob({ pattern: "*.md", base: "./src/content/blog" }),
+  // Markdown and MDX share metadata, URLs, listings, and the RSS feed.
+  loader: glob({ pattern: "*.{md,mdx}", base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
