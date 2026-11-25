@@ -35,7 +35,6 @@ import { cv } from "../data/cv";
             <div class="row">
               <h3>
                 <a href={job.link}>{job.company}</a>
-                {job.badges.map((b) => <Badge>{b}</Badge>)}
               </h3>
               <span class="dates">
                 {job.start} – {job.end}
@@ -95,6 +94,11 @@ import { cv } from "../data/cv";
 </Base>
 
 <style>
+  :global(body) {
+    /* Quickshell's Ochre secondary shade frames the lighter parchment. */
+    background: #bfa476;
+  }
+
   main {
     /* Quickshell's Ochre palette and RuledFrame: ink, lapis, then sap green. */
     --cv-rule: #bfa476;
@@ -110,6 +114,7 @@ import { cv } from "../data/cv";
     max-width: 56rem;
     margin: 2rem auto;
     padding: 2.5rem 3.5rem 3.5rem;
+    background: var(--bg);
     border: 1px solid var(--fg);
     border-radius: 12px;
     display: flex;
@@ -370,11 +375,16 @@ import { cv } from "../data/cv";
   }
 
   @media print {
+    :global(body) {
+      background: white;
+    }
+
     main {
       width: 100%;
       max-width: none;
       margin: 0;
       padding: 0;
+      background: transparent;
       border: none;
       gap: 1.5rem;
       line-height: 1.45;

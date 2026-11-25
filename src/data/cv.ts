@@ -10,7 +10,6 @@ export interface Job {
   company: string;
   link: string;
   title: string;
-  badges: string[];
   start: string;
   end: string;
   highlights: string[];
@@ -69,7 +68,6 @@ export const cv: Cv = {
       company: "Kagi",
       link: "https://kagi.com",
       title: "AI Engineer",
-      badges: ["Remote"],
       start: "Apr 2024",
       end: "Present",
       highlights: [
@@ -87,7 +85,6 @@ export const cv: Cv = {
       company: "Wilfrid Laurier University",
       link: "https://wlu.ca",
       title: "Work-Study Program Coordinator",
-      badges: ["Remote"],
       start: "Oct 2022",
       end: "May 2023",
       highlights: [
@@ -99,7 +96,6 @@ export const cv: Cv = {
       company: "Cystic Fibrosis Canada",
       link: "https://www.cysticfibrosis.ca/",
       title: "Data Analyst",
-      badges: ["Remote"],
       start: "Jul 2022",
       end: "Aug 2022",
       highlights: [
@@ -111,7 +107,6 @@ export const cv: Cv = {
       company: "Cystic Fibrosis Canada",
       link: "https://www.cysticfibrosis.ca/",
       title: "QA Analyst",
-      badges: [],
       start: "Jul 2019",
       end: "Aug 2019",
       highlights: [
