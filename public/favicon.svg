@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>rehanzo</title>
+  <!-- Gilded frame: dark outline, gold leaf, then the blue field of the initial. -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="2" fill="#d4a03c" stroke="#2e1f10" />
+  <rect x="3" y="3" width="26" height="26" fill="#2c4c9c" stroke="#2e1f10" stroke-width="0.75" />
+  <!-- Penwork: white trefoils in each corner of the field. -->
+  <g fill="#eedfbb">
+    <circle cx="5.6" cy="6.6" r="0.7" /><circle cx="6.6" cy="5.6" r="0.7" /><circle cx="6.6" cy="6.6" r="0.5" />
+    <circle cx="26.4" cy="6.6" r="0.7" /><circle cx="25.4" cy="5.6" r="0.7" /><circle cx="25.4" cy="6.6" r="0.5" />
+    <circle cx="5.6" cy="25.4" r="0.7" /><circle cx="6.6" cy="26.4" r="0.7" /><circle cx="6.6" cy="25.4" r="0.5" />
+    <circle cx="26.4" cy="25.4" r="0.7" /><circle cx="25.4" cy="26.4" r="0.7" /><circle cx="25.4" cy="25.4" r="0.5" />
+  </g>
+  <!-- Blackletter R: straight stem with lozenge ends, an angular bowl, a slanted leg. -->
+  <g fill="#e8b84a" stroke="#2e1f10" stroke-width="0.6" stroke-linejoin="miter" transform="translate(-0.3 0.5)">
+    <path fill-rule="evenodd" d="M11.75 6.5 L13.75 8.5 L19 8.5 L21.5 11 L21.5 13.5 L19 16 L18.8 16 L22.3 23.1 L24.2 22.3 L23 24.8 L20 24.8 L16 16 L13.75 16 L13.75 22.5 L11.75 24.5 L9.75 22.5 L9.75 8.5 Z M13.75 10.6 L18.2 10.6 L19.2 11.6 L19.2 13 L18.2 13.9 L13.75 13.9 Z" />
+  </g>
+</svg>
