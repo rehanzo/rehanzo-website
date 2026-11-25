@@ -51,12 +51,12 @@ export interface Cv {
 
 export const cv: Cv = {
   name: "Rehan A. Rana",
-  location: "Toronto, Ontario, EST",
+  location: "Toronto, Ontario, ET",
   locationLink: "https://www.google.com/maps/place/Toronto,+ON",
   about:
     "AI Engineer at Kagi, working on agents, retrieval and model integrations for Kagi Assistant.",
   summary:
-    "Since 2024 I've worked on Kagi Assistant: I prototyped its agentic architecture, built its retrieval agent, and helped rebuild it on Pydantic AI. I also created and maintain Kagi's official MCP server. Before Kagi, I studied Computer Science and Business Administration at Wilfrid Laurier University. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
+    "Since 2024 I've worked on Kagi Assistant: I prototyped its agentic architecture, built its retrieval agent, and helped rebuild it on Pydantic AI. I also created and maintain Kagi's official MCP server. Outside work, I build small tools for problems I run into, mostly in Python and Rust, and have contributed to the Linux desktop projects I use every day.",
   website: "https://rehanzo.com",
   email: "rehan@rehanrana.com",
   social: [
@@ -75,7 +75,7 @@ export const cv: Cv = {
         "Major contributor to a ground-up rewrite of the Assistant's agent stack onto Pydantic AI, replacing its custom in-house framework",
         "Created and maintain Kagi's official open-source MCP server (500+ GitHub stars), letting AI agents like Claude use Kagi Search; also published Kagi's Python API SDK to PyPI",
         "Designed and built Librarian, a retrieval sub-agent that reads whole documents and web pages and returns excerpts, full content or a direct answer as each query needs; it powered all document and web retrieval and remains heavily used",
-        "Built and maintained the content extraction pipelines behind retrieval, covering web pages, documents, YouTube transcripts and Reddit threads, with provider fallbacks for reliability",
+        "Built and maintained the extraction pipelines Librarian reads from, covering web pages, documents, YouTube transcripts and Reddit threads, with provider fallbacks for reliability",
         "Integrated and maintained models from all major AI providers, improving reliability and cost through prompt caching, failover and usage tracking",
         "Led development of a context management panel that lets users inspect and control what the Assistant is working with",
         "Built evaluation and benchmarking tooling to measure answer quality and guide model and prompt decisions",
